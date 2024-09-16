@@ -7,6 +7,8 @@
  * Status: Tested on SPOJ FASTFLOW and SPOJ MATCHING, stress-tested
  */
 
+#pragma once
+
 struct Edge {
 	int u, v;
 	long long capacity;
