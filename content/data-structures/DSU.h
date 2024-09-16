@@ -6,7 +6,7 @@
  * Description: Disjoint-set data structure.
  * Time: $O(\alpha(N))$
  */
-
+#pragma once
 // Remember to check limit
 struct DSU {
 	static constexpr int N_MAX = 2e5 + 1; //(*)
