@@ -4,6 +4,7 @@
  * License: CC0
  * Source: https://https://github.com/dothething1DA/cp_template/edit/main/content/data-structures/sparseTable.h
  * Description: Sparse table for RMQ.
+ * Time: O(N\logN)
  * Status: Tested on SPOJ FASTFLOW and SPOJ MATCHING, stress-tested
  */
 
