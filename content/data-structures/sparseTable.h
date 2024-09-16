@@ -1,5 +1,11 @@
-#include <bits/stdc++.h>
-using namespace std;
+/**
+ * Author: me
+ * Date: 2024-09-16
+ * License: CC0
+ * Source: https://https://github.com/dothething1DA/cp_template/edit/main/content/data-structures/sparseTable.h
+ * Description: Sparse table for RMQ.
+ * Status: Tested on SPOJ FASTFLOW and SPOJ MATCHING, stress-tested
+ */
 
 // Remember to check the limits
 // Remember to check the min-max
