@@ -2,7 +2,6 @@
  * Description: Disjoint-set data structure.
  * Time: $O(\alpha(N))$
  */
-#pragma once
 
 // Remember to check limit
 struct DSU {
