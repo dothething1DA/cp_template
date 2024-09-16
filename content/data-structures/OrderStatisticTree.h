@@ -5,8 +5,6 @@
  * Time: O(\log N)
  */
 
-#pragma once
-
 #include <bits/extc++.h> /** keep-include */
 using namespace __gnu_pbds;
 
