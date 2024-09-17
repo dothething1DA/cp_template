@@ -3,7 +3,8 @@
  * Date: 2024-09-16
  * License: CC0
  * Source: https://https://github.com/dothething1DA/cp_template/edit/main/content/graph/Dinitz.h
- * Description: Flow algorithm with complexity $O(V^{2}E)$.
+ * Description: Max flow.
+ * Time: $O(V^{2}E)$
  * Status: Tested on SPOJ FASTFLOW and SPOJ MATCHING, stress-tested
  */
 

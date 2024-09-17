@@ -4,6 +4,7 @@
  * License: CC0
  * Source: https://https://github.com/dothething1DA/cp_template/edit/main/content/graph/Tarjan_BAP.h
  * Description: Bridges and Articulation point with graph traversal.
+ * Time: $O(V + E)$
  * Status: Tested on SPOJ FASTFLOW and SPOJ MATCHING, stress-tested
  */
 #pragma once
@@ -37,8 +38,9 @@ struct Graph {
 				if (u == dfsRoot) rootChildren += 1;
 				traverse(v, u);
 				if (earliest[v] >= visitTime[u]) {
-					isArticulationPoint[u] = 1; // u is an articulation point
-					if (earliest[v] > visitTime[u]) bridgeCnt += 1; // (u, v) is a bridge
+					isArticulationPoint[u] = 1;
+					// (u, v) is bridge
+					if (earliest[v] > visitTime[u]) bridgeCnt += 1;
 				}
 				earliest[u] = min(earliest[u], earliest[v]);
 			}

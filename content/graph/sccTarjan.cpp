@@ -4,6 +4,7 @@
  * License: CC0
  * Source: https://https://github.com/dothething1DA/cp_template/edit/main/content/graph/sccTarjan.h
  * Description: SCC with Tarjan algo.
+ * Time: $O(V + E)$
  * Status: Tested on SPOJ FASTFLOW and SPOJ MATCHING, stress-tested
  */
 
