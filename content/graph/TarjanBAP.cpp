@@ -7,7 +7,7 @@
  * Time: $O(V + E)$
  * Status: Tested on SPOJ FASTFLOW and SPOJ MATCHING, stress-tested
  */
-#pragma once
+
 // Remember to check limits
 struct Graph {
 	static constexpr int N_MAX = 1e5; //(*)
@@ -55,7 +55,7 @@ struct Graph {
 		isArticulationPoint[root] = rootChildren > 1;
 	}
 };
-
+/*
 Graph g;
 
 int main() {
@@ -73,3 +73,4 @@ int main() {
 	for (int i = 1; i <= n; i += 1) ap += g.isArticulationPoint[i];
 	cout << ap << " " << g.bridgeCnt;
 }
+*/

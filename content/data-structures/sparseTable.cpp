@@ -34,13 +34,10 @@ struct SparseTable {
 		return min(st[i][l], st[i][r - (1 << i) + 1]); //(*)
 	}
 };
-
+/*
 SparseTable rmq;
 
 int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(0);
-
 	int n, q; cin >> n >> q;
 	int arr[n]; for (int i = 0; i < n; i += 1) cin >> arr[i];
 
@@ -52,3 +49,4 @@ int main() {
 		cout << rmq.retrieve(l, r-1) << "\n";
 	}
 }
+*/

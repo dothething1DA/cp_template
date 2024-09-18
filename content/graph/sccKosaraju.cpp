@@ -48,13 +48,10 @@ struct Graph {
 		}
 	}
 };
-
+/*
 Graph g;
 
 int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(0);
-
 	int m;
 	cin >> g.n >> m;
 	for (int i = 0; i < m; i += 1) {
@@ -65,3 +62,4 @@ int main() {
 	g.findAllScc();
 	cout << g.scc_count;
 }
+*/

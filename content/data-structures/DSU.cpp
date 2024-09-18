@@ -6,7 +6,7 @@
  * Description: Disjoint-set data structure.
  * Time: $O(\alpha(N))$
  */
-#pragma once
+
 // Remember to check limit
 struct DSU {
 	static constexpr int N_MAX = 2e5 + 1; //(*)
@@ -44,7 +44,7 @@ struct DSU {
 		return findRoot(u) == findRoot(v);
 	}
 };
-
+/*
 DSU dsu;
 
 int main() {
@@ -58,3 +58,4 @@ int main() {
 		else cout << dsu.sameSet(u, v) << "\n";
 	}
 }
+*/
