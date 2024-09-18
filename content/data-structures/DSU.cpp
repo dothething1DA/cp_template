@@ -1,8 +1,5 @@
 /**
  * Author: me
- * Date: 2024-09-16
- * License: CC0
- * Source: https://github.com/hoke-t/tamu-kactl/blob/master/content/data-structures/DSU.h
  * Description: Disjoint-set data structure.
  * Time: $O(\alpha(N))$
  */

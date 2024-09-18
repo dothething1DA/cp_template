@@ -1,11 +1,7 @@
 /**
  * Author: me
- * Date: 2024-09-16
- * License: CC0
- * Source: https://https://github.com/dothething1DA/cp_template/edit/main/content/graph/sccKosaraju.h
  * Description: SCC finding with kosaraju algo.
  * Time: $O(V + E)$
- * Status: Tested on SPOJ FASTFLOW and SPOJ MATCHING, stress-tested
  */
 
 struct Graph {
