@@ -5,7 +5,8 @@
  */
 
 struct Graph {
-	static constexpr int N_MAX = 1e4 + 1; //(*)
+	// CAREFUL
+	static constexpr int N_MAX = 1e4 + 1;
 
 	int scc[N_MAX];
 	int n, scc_count;

@@ -6,7 +6,8 @@
 
 // Remember to check limits
 struct Graph {
-	static constexpr int N_MAX = 1e5; //(*)
+	// CAREFUL
+	static constexpr int N_MAX = 1e5;
 
 	int earliest[N_MAX];
 	int visitTime[N_MAX];

@@ -6,7 +6,8 @@
 
 // Remember to check limit
 struct DSU {
-	static constexpr int N_MAX = 2e5 + 1; //(*)
+	// CAREFUL
+	static constexpr int N_MAX = 2e5 + 1;
 
 	int n, t;
 	int par[N_MAX];

@@ -21,7 +21,7 @@ struct Edge {
 };
 
 struct Network {
-	// Remember to check limits
+	// CAREFUL
 	static constexpr int N_MAX = 101;
 	static constexpr long long INF = 1e14;
 
