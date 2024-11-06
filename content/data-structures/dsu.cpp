@@ -32,6 +32,7 @@ struct DSU {
 	bool same_set(int u, int v) {return root(u) == root(v);}
 };
 
+/*
 DSU dsu;
 
 void example(int n, int q) {
@@ -43,3 +44,4 @@ void example(int n, int q) {
 		else dsu.join(u, v);
 	}
 }
+*/
