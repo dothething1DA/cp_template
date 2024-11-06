@@ -25,13 +25,11 @@ struct DSU {
 	void join(int u, int v) {
 		u = root(u); v = root(v);
 		if (u == v) return;
-		if (par[u] > par[v])
-		{u ^= v; v ^= u; u ^= v;}
+		if (par[u] > par[v]) {u ^= v; v ^= u; u ^= v;}
 		par[u] += par[v]; par[v] = u;
 	}
 
-	bool same_set(int u, int v)
-	{return root(u) == root(v);}
+	bool same_set(int u, int v) {return root(u) == root(v);}
 };
 
 DSU dsu;
