@@ -1,6 +1,7 @@
 /**
  * Author: me
- * Description: Sparse table for static RMQ. This version is 1-indexed
+ * Description: Sparse table for static RMQ.
+ * This version is 1-indexed
  * Time: $O(N \log N + Q)$
  */
 
