@@ -17,7 +17,7 @@ struct SparseTable {
 		for (int i = 1; i <= n; i += 1) st[0][i] = a[i];
 		
 		for (int i = 1; i < lg2; i += 1)
-		for (int j = 1; j <= n; j += 1)
+		for (int j = 1; j + (1 << (i-1)) <= n; j += 1)
 		// CAREFUL MIN-MAX
 		st[i][j] = min(st[i-1][j], st[i-1][j + (1 << (i-1))]);
 	}
