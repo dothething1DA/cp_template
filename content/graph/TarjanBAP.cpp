@@ -4,20 +4,20 @@
  * Time: $O(V + E)$
  */
 
-// Remember to check limits
 struct Graph {
-	// CAREFUL
-	static constexpr int N_MAX = 1e5;
-
-	int earliest[N_MAX];
-	int visitTime[N_MAX];
-	vector<int> nv[N_MAX];
-	bitset<N_MAX> isArticulationPoint;
+	vector<int> earliest;
+	vector<int> visitTime;
+	vector<vector<int>> nv;
+	vector<bool> isArticulationPoint;
 	int n, bridgeCnt, dfsRoot, rootChildren, curTime;
 
 	Graph() {}
 	void init(int _n) {
 		n = _n;
+		nv.resize(_n+1);
+		earliest.resize(_n+1);
+		visitTime.resize(_n+1);
+		isArticulationPoint.resize(_n+1, 0);
 	}
 
 	void addEdge(int u, int v) {
@@ -55,8 +55,7 @@ struct Graph {
 /*
 Graph g;
 
-int main() {
-	int n, m; cin >> n >> m;
+void example(int n, int m) {
 	g.init(n);
 	for (int i = 0; i < m; i += 1) {
 		int u, v; cin >> u >> v;
@@ -64,10 +63,12 @@ int main() {
 	}
 
 	// When graph is not connected
-	for (int i = 1; i <= n; i += 1) if (!g.visitTime[i]) g.startFrom(i);
+	for (int i = 1; i <= n; i += 1)
+	if (!g.visitTime[i]) g.startFrom(i);
 
 	int ap = 0;
-	for (int i = 1; i <= n; i += 1) ap += g.isArticulationPoint[i];
+	for (int i = 1; i <= n; i += 1)
+	ap += g.isArticulationPoint[i];
 	cout << ap << " " << g.bridgeCnt;
 }
 */

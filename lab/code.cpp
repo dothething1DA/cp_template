@@ -1,59 +1,73 @@
 /**
  * Author: me
- * Description: Find longest palindrome centered at each index.
- * Initialise with original 0-indexed string. QUERYING IS 1-INDEXED.
- * Time: $O(N)$
+ * Description: Bridges and Articulation point with graph traversal.
+ * Time: $O(V + E)$
  */
 
-#include <bits/stdc++.h>
-using namespace std;
+struct Graph {
+	vector<int> earliest;
+	vector<int> visitTime;
+	vector<vector<int>> nv;
+	vector<bool> isArticulationPoint;
+	int n, bridgeCnt, dfsRoot, rootChildren, curTime;
 
-struct Manacher {
-	string s;
-	vector<int> pl;
+	Graph() {}
+	void init(int _n) {
+		n = _n;
+		nv.resize(_n+1);
+		earliest.resize(_n+1);
+		visitTime.resize(_n+1);
+		isArticulationPoint.resize(_n+1, 0);
+	}
 
-	void calc() {
-		int n = s.length() - 1;
-		int l = 0, r = 0;
+	void addEdge(int u, int v) {
+		nv[u].push_back(v);
+		nv[v].push_back(u);
+	}
 
-		for (int i = 1; i <= n; i += 1) {
-			if (i < r) pl[i] = min(r-i, pl[l+r-i]);
-			while (s[i-pl[i]-1] == s[i+pl[i]+1]) pl[i] += 1;
-			if (i + pl[i] > r) {
-				l = i - pl[i];
-				r = i + pl[i];
+	void traverse(int u, int p) {
+		earliest[u] = curTime;
+		visitTime[u] = curTime++;
+
+		for (int v: nv[u]) if (v != p) {
+			if (visitTime[v]) earliest[u] = min(earliest[u], visitTime[v]);
+			else {
+				if (u == dfsRoot) rootChildren += 1;
+				traverse(v, u);
+				if (earliest[v] >= visitTime[u]) {
+					isArticulationPoint[u] = 1;
+					// (u, v) is bridge
+					if (earliest[v] > visitTime[u]) bridgeCnt += 1;
+				}
+				earliest[u] = min(earliest[u], earliest[v]);
 			}
 		}
 	}
 
-	Manacher() {}
-	void init(string _s, char f='~') {
-		s = "@"; s += f;
-		for (char c: _s)
-		{s += c; s += f;} s += '|';
-		pl.resize(s.length(), 0);
-		calc();
-	}
-
-	// Query for substring [l, r]
-	// on original string with 1-indexed
-	bool is_palindrome(int l, int r) {
-		l <<= 1; r <<= 1;
-		int mid = (l+r) >> 1;
-		return mid + pl[mid] >= r;
+	void startFrom(int root) {
+		curTime = 1;
+		dfsRoot = root;
+		rootChildren = 0;
+		traverse(root, root);
+		isArticulationPoint[root] = rootChildren > 1;
 	}
 };
-
-Manacher mana;
-
-void example() {
-	string s;
-	cin >> s;
-	mana.init(s);
-	int l, r; cin >> l >> r;
-	cout << mana.is_palindrome(l, r);
-}
+/*
+Graph g;
 
 int main() {
-	example();
+	int n, m; cin >> n >> m;
+	g.init(n);
+	for (int i = 0; i < m; i += 1) {
+		int u, v; cin >> u >> v;
+		g.addEdge(u, v);
+	}
+
+	// When graph is not connected
+	for (int i = 1; i <= n; i += 1) if (!g.visitTime[i]) g.startFrom(i);
+
+	int ap = 0;
+	for (int i = 1; i <= n; i += 1) ap += g.isArticulationPoint[i];
+	cout << ap << " " << g.bridgeCnt;
 }
+*/
