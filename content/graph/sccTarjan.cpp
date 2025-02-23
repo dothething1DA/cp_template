@@ -5,20 +5,26 @@
  */
 
 struct Graph {
-	// CAREFUL
-	static constexpr int N_MAX = 1e4 + 1;
-
-	int vt[N_MAX];
-	int et[N_MAX];
 	stack<int> st;
-	int scc[N_MAX];
+	vector<int> vt;
+	vector<int> et;
+	vector<int> scc;
 	int dfsTime = 1;
 	int scc_count, n;
-	bitset<N_MAX> finished;
-	vector<int> graph[N_MAX];
+	vector<bool> finished;
+	vector<vector<int>> nv;
+
+	void init(int _n) {
+		n = _n;
+		vt.resize(n+1);
+		et.resize(n+1);
+		nv.resize(n+1);
+		scc.resize(n+1);
+		finished.resize(n+1);
+	}
 
 	void addEdge(int u, int v) {
-		graph[u].push_back(v);
+		nv[u].push_back(v);
 	}
 
 	void traverse(int u) {
@@ -28,7 +34,7 @@ struct Graph {
 		vt[u] = dfsTime;
 		et[u] = dfsTime++;
 
-		for (int v: graph[u]) if (!finished[v]) {
+		for (int v: nv[u]) if (!finished[v]) {
 			if (vt[v] == 0) {
 				traverse(v);
 				et[u] = min(et[v], et[u]);
@@ -50,16 +56,15 @@ struct Graph {
 	}
 
 	void findAllScc() {
-		// 1-indexed vertices
 		for (int i = 1; i <= n; i += 1) traverse(i);
 	}
 };
-/*
-Graph g;
 
-int main() {
-	int m;
-	cin >> g.n >> m;
+
+/*Graph g;
+
+void example(int n, int m) {
+	g.init(n);
 	for (int i = 0; i < m; i += 1) {
 		int u, v; cin >> u >> v;
 		if (u != v) g.addEdge(u, v);
@@ -67,5 +72,4 @@ int main() {
 
 	g.findAllScc();
 	cout << g.scc_count;
-}
-*/
+}*/
