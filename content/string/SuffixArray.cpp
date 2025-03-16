@@ -7,6 +7,8 @@
 struct SuffixArray {
 	string s;
 	vector<int> p; //suffix array
+	vector<int> rank;
+	vector<int> alcp; // alcp[i] = lcp(p[i], p[i+1])
 	int mnc, mxc, len;
 	vector<queue<int>> f;
 	vector<vector<int>> c;
@@ -46,9 +48,9 @@ struct SuffixArray {
 		update_label(slen); slen <<= 1;
 	}
 
-	void init(string _s) {
-		s = _s; len = s.length();
-		f.resize(max(128, len));
+	void init(string _s, char last_char) {
+		s = _s; s += last_char;
+		len = s.length(); f.resize(max(128, len));
 		mnc = INT_MAX; mxc = -INT_MAX;
 		for (int i = 0; i < len; i += 1) {
 			mnc = min(mnc, int(s[i]));
@@ -67,5 +69,38 @@ struct SuffixArray {
 
 		int slen = 1;
 		while (slen < len) sort_css(slen);
+
+		rank.resize(len); alcp.resize(len-1);
+		for (int i = 0; i < len; i += 1)
+		rank[p[i]] = i; int k = 0;
+
+		for (int i = 0; i < len; i += 1) {
+			if (rank[i] == len-1) {
+				k = 0;
+				continue;
+			}
+
+			int j = p[rank[i]+1];
+			while (max(i, j)+k < len && s[i+k] == s[j+k]) k += 1;
+			alcp[rank[i]] = k; if (k) k -= 1;
+		}
+	}
+
+	int lcp(int i, int j) {
+		int res = 0;
+		for (int k = __lg(len); k >= 0; k -= 1) {
+			if (c[k][i] != c[k][j]) continue;
+			i += 1 << k; i %= len;
+			j += 1 << k; j %= len;
+			res += 1 << k;
+		}
+		return res;
+	}
+
+	long long distinct_substring_cnt() {
+		long long res = len-1;
+		res *= (res+1ll); res >>= 1;
+		for (long long x: alcp) res -= x;
+		return res;
 	}
 };
