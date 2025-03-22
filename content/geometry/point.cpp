@@ -26,12 +26,12 @@ struct Point {
 	}
 
 	// Calculation
-	T operator&(Vector v) const {return x*v.y - y*v.x;}
-	T operator*(Vector v) const {return x*v.x + y*v.y;}
-	Vector operator*(T d) const {return Vector(x*d, y*d);}
-	Vector operator/(T d) const {return Vector(x/d, y/d);}
-	Vector operator+(Vector v) const {return Vector(x+v.x,y+v.y);}
-	Vector operator-(Vector v) const {return Vector(x-v.x,y-v.y);}
+	T operator&(Vector v) {return x*v.y - y*v.x;}
+	T operator*(Vector v) {return x*v.x + y*v.y;}
+	Vector operator*(T d) {return Vector(x*d, y*d);}
+	Vector operator/(T d) {return Vector(x/d, y/d);}
+	Vector operator+(Vector v) {return Vector(x+v.x,y+v.y);}
+	Vector operator-(Vector v) {return Vector(x-v.x,y-v.y);}
 
 	void operator*=(T d) {x *= d; y *= d;}
 	void operator/=(T d) {x /= d; y /= d;}
@@ -43,7 +43,7 @@ struct Point {
 	T dist2(Point p) {return (x-p.x)*(x-p.x) + (y-p.y)*(y-p.y);}
 	long double dist(Point p) {return sqrt(dist2(p));}
 
-	// Rotate to the left
+	// Rotate counter clockwise around (0, 0)
 	Point rotated(long double a)
 	{return Point(x*cos(a)-y*sin(a),x*sin(a)+y*cos(a));}
 	void rotate(long double a) {
