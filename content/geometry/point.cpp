@@ -39,7 +39,7 @@ struct Point {
 	void operator-=(Vector v) {x -= v.x; y -= v.y;}
 
 	T len2() {return x*x + y*y;}
-	long double len() {return sqrt((long double)(len2()));}
+	long double len() {return sqrt(len2());}
 	T dist2(Point p) {return (x-p.x)*(x-p.x) + (y-p.y)*(y-p.y);}
 	long double dist(Point p) {return sqrt(dist2(p));}
 
