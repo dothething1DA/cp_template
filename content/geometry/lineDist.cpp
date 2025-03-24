@@ -6,6 +6,6 @@
 
 // CAREFUL: p1 == p2
 template<class P>
-int line_dist(P q, P p1, P p2) {
-	return abs(((q-p1)&(p2-p1))/(p2-p1).dist());
+long double line_dist(P q, P p1, P p2) {
+	return abs(((q-p1)&(p2-p1))/(p2-p1).len());
 }
