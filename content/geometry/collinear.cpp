@@ -5,7 +5,7 @@
  */
  
 // return 1: q is on clockwise side of line p1p2
-// return -1: q is on counter clockwise side of line p1p1
+// return -1: q is on counter clockwise side of line p1p2
 // return 0: collinear (distance from line <= eps)
 template<class P>
 int relative_pos(P q, P p1, P p2, long double eps) {
