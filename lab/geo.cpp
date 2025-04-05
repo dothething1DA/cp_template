@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+namespace sol {
 
 #define Vector Point
 
@@ -46,24 +47,44 @@ struct Point {
 };
 
 template<class P>
+int relative_pos(P q, P p1, P p2, long double eps) {
+	long double cross = (q-p1)&(p2-p1);
+	if (cross > eps) return 1;
+	if (cross < -eps) return -1;
+	return 0;
+}
+
+template<class P>
 long double line_dist(P q, P p1, P p2) {
 	return abs(((q-p1)&(p2-p1))/(p2-p1).len());
 }
 
 template<class P>
-long double lineseg_dist(P q, P p1, P p2) {
+P projection(P q, P p1, P p2) {
 	long double s = ((q-p1)*(p2-p1))/(p1-p2).len2();
-	if (s < 0.0) return q.dist(p1);
-	if (s > 1.0) return q.dist(p2);
-	return line_dist(q, p1, p2);
+	return (p1 + ((p2-p1)*s));
+}
+
+void test() {
+	Point<long double> p1, p2, p3, p4;
+
+	for (int i = 0; i < 100000; i += 1) {
+		p1 = {rand()%100, rand()%100};
+		p2 = {rand()%100, rand()%100};
+		p3 = {rand()%100, rand()%100};
+		p4 = projection(p1, p2, p3);
+		if (abs(p1.dist(p4) - line_dist(p1, p2, p3)) > Point<long double>::eps) {
+			cout << "WA";
+			return;
+		}
+	}
+
+	cout << "AC";
+}
+
 }
 
 int main() {
-	Point<long double> p1, p2, p3;
-
-	p1 = {0, 0};
-	p2 = {1, 1};
-	p3 = {0.5, 0.5};
-
-	cout << lineseg_dist(p3, p1, p2);
+	srand(time(0));
+	sol::test();
 }
