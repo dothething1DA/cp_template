@@ -58,11 +58,12 @@ template<class P>
 long double line_dist(P q, P p1, P p2) {
 	return abs(((q-p1)&(p2-p1))/(p2-p1).len());
 }
-
 template<class P>
-P projection(P q, P p1, P p2) {
+bool has_projection(P q, P p1, P p2, P& res) {
+	if (p1 == p2) return false;
 	long double s = ((q-p1)*(p2-p1))/(p1-p2).len2();
-	return (p1 + ((p2-p1)*s));
+	res = (p1 + ((p2-p1)*s));
+	return true;
 }
 
 void test() {
@@ -72,7 +73,7 @@ void test() {
 		p1 = {rand()%100, rand()%100};
 		p2 = {rand()%100, rand()%100};
 		p3 = {rand()%100, rand()%100};
-		p4 = projection(p1, p2, p3);
+		if (!has_projection(p1, p2, p3, p4)) continue;
 		if (abs(p1.dist(p4) - line_dist(p1, p2, p3)) > Point<long double>::eps) {
 			cout << "WA";
 			return;

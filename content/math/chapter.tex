@@ -72,6 +72,11 @@ y = r\sin\theta\sin\phi & \theta = \textrm{acos}(z/\sqrt{x^2+y^2+z^2})\\
 z = r\cos\theta & \phi = \textrm{atan2}(y,x)
 \end{array}\]
 
+\subsection{Polygon}
+\subsubsection {Area}
+Given a list of points ordered as their positions on the boundary of a polygon and the first point is added to the end of the list once:\\
+Area = $\dfrac{1}{2} \left| \sum_{i=1}^{n-1} (p_i \times p_{i+1}) \right|$
+
 \section{Derivatives/Integrals}
 \begin{align*}
 	\dfrac{d}{dx}\arcsin x = \dfrac{1}{\sqrt{1-x^2}} &&& \dfrac{d}{dx}\arccos x = -\dfrac{1}{\sqrt{1-x^2}} \\

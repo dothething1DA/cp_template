@@ -5,7 +5,9 @@
  */
  
 template<class P>
-P projection(P q, P p1, P p2) {
+bool has_projection(P q, P p1, P p2, P& res) {
+	if (p1 == p2) return false;
 	long double s = ((q-p1)*(p2-p1))/(p1-p2).len2();
-	return (p1 + ((p2-p1)*s));
+	res = (p1 + ((p2-p1)*s));
+	return true;
 }

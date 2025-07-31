@@ -39,9 +39,10 @@ struct Line {
 	{return abs(a-l.a) < eps && abs(b-l.b) < eps;}
 
 	// Careful for parallel or ==
-	Point<T> intersect(Line l) {
+	bool intersect(Line l, Point<T>& res) {
+		if (parallel_with(l)) return false;
 		T x = (b*l.c - c*l.b)/(a*l.b - b*l.a);
 		T y = (c*l.a - a*l.c)/(a*l.b - b*l.a);
-		return {x, y};
+		res = {x, y}; return true;
 	}
 };
